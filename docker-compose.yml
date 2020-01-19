@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: dockerfile-node
+    image: nodejs
+    container_name: nodejs
+    hostname: nodejs
+    restart: unless-stopped
+    volumes:
+       - ./app.js:/home/node/app/app.js
+
+  haproxy:
+    build: ./haproxy/.
+    ports:
+      - '8080:8080'
+    container_name: haproxy
+
+  webserver1:
+    image: nginx:mainline-alpine
+    container_name: webserver1
+    restart: unless-stopped
+    volumes:
+      - ./nginx-conf/nginx1:/etc/nginx/conf.d
+    depends_on:
+      - nodejs
+
+  webserver2:
+    image: nginx:mainline-alpine
+    container_name: webserver2
+    restart: unless-stopped
+    volumes:
+      - ./nginx-conf/nginx2:/etc/nginx/conf.d
+    depends_on:
+      - nodejs
+
+  webserver3:
+    image: nginx:mainline-alpine
+    container_name: webserver3
+    restart: unless-stopped
+    volumes:
+      - ./nginx-conf/nginx3:/etc/nginx/conf.d
+    depends_on:
+      - nodejs
