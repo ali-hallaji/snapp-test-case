@@ -3,18 +3,22 @@ This is a test case of DevOps role from the Snappmarket.
 I share it here with my answer.
 
 ### Tests:
->>1- Create a simple node.js application for printing current timestamp and dockerize it
+>1- Create a simple node.js application for printing current timestamp and dockerize it
 (Dockerfile + docker compose).
-2- Use nginx for web server behind the application (Dockerfile + docker compose)
-3- Create ha proxy config file with these criteria:
->>>1. one listen block to passing mysql connections to the desired ip/port
-2. one frontend block to receive http requests on port 80
-3. one backend block with 2 servers
-4. use basic http authentication for accessing the backend
-5. Dockerize ha proxy
-4- Create a pipeline with Gitlab CI to running, validating and reloading ha proxy config file
+
+>2- Use nginx for web server behind the application (Dockerfile + docker compose)
+
+>3- Create ha proxy config file with these criteria:
+>>1. one listen block to passing mysql connections to the desired ip/port
+>>2. one frontend block to receive http requests on port 80
+>>3. one backend block with 2 servers
+>>4. use basic http authentication for accessing the backend
+>>5. Dockerize ha proxy
+
+>4- Create a pipeline with Gitlab CI to running, validating and reloading ha proxy config file
 automatically when merging to develop branch.
-5- It's a bash script test case that asked you to understand it to solve some issue on its.
+
+>5- It's a bash script test case that asked you to understand it to solve some issue on its.
 
 
 ### Answers
