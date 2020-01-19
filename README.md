@@ -30,10 +30,10 @@ automatically when merging to develop branch.
  - 1- Purpose of this code: We have printed all regular files listed in `/tmp` directory that modified greater than 24 hours ago and contains `*.dophin.temp` pattern(extension), then this list sent to `adddate()` function, afterward this function add date $time to this list and print it.
  - 2- All files in the `/` directory that they are modified greater than 24 hours ago and they have `*.dophin.temp` pattern(extension) sent to xargs for print in echo.
  - 3- Problems of the Test:
-  1. "For loops" over "find output" are fragile, it's better to use "find -exec" or a "while read" loop.(line: 9)
-  2. We must use double quote to prevent globbing(Security issue) and word splitting.(lines: 11, 12)
-  3. It's better to use -print0/-0 or -exec + to allow for non-alphanumeric filenames.(line: 15)
-  4. It's better to use find instead of ls to handle non-alphanumeric filenames.(line: 12)
+    1. "For loops" over "find output" are fragile, it's better to use "find -exec" or a "while read" loop.(line: 9)
+    2. We must use double quote to prevent globbing(Security issue) and word splitting.(lines: 11, 12)
+    3. It's better to use -print0/-0 or -exec + to allow for non-alphanumeric filenames.(line: 15)
+    4. It's better to use find instead of ls to handle non-alphanumeric filenames.(line: 12)
  - 4- Rewrite code(another way):
 ```
 #!/bin/bash
